@@ -1,23 +1,7 @@
 <h1><center>This is HNanT's pages.</center> </h1>
 <a href="http://www.httptec.com">Click to HNanT's website.</a>
 <ul>
-		<li><img name="pic" src='http://pic2.ooopic.com/01/03/51/25b1OOOPIC19.jpg' /></li>
-		<li><img name="pic" src='http://baike.soso.com/p/20090711/20090711101754-314944703.jpg' /></li>
-		<li><img name="pic" src='http://img2.3lian.com/img2007/19/33/005.jpg' /></li>
-		<li><img name="pic" src='http://img.taopic.com/uploads/allimg/130501/240451-13050106450911.jpg' /></li>
-		<script type="text/javascript">
-		function setImg(w, h){
-			alert("111");
-		    //var imgList = document.getElementsByTagName('img');
-		    var imgList = document.getElementsByName("pic");
-		    for(var i=0;i<imgList.lenght;i++){
-		    	alert("222");
-		        if(imgList[i].width>w || imgList[i].height>h){
-		            imgList[i].width = w;
-		            imgList[i].height = h;
-		        }
-		    }
-		}
-		setImg(400,400);
-	</script>
+		<li><img name="pic" src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3236125949,3621074658&fm=26&gp=0.jpg' /></li>
+		<li><img name="pic" src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=538930594,714478555&fm=26&gp=0.jpg' /></li>
+		<li><img name="pic" src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2251986177,3999926444&fm=26&gp=0.jpg' /></li>
 	</ul>
