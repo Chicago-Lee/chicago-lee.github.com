@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>公告效果</title>
+<title>好好学习，天天向上</title>
 <style type="text/css">
 * {
     font-size:14px;
@@ -115,7 +115,142 @@ html * {
         </div>
         <!--内容-->
         <div class="timeline-info">
-            <div class="timeline-content">我是内</div>
+            <div class="timeline-content">#include<reg51.h>
+#include<intrins.h>
+sbit lcden=P3^4;
+sbit lcdrs=P3^5;
+sbit RX=P3^7;
+sbit TX=P3^6;
+float time,S;
+char flag;
+////////////////////////////
+void delay(unsigned int ms)
+{
+	unsigned char i;
+	while(ms--)
+	{for(i=0;i<120;i++);}
+}
+/////////////////////////////
+void write_com(unsigned char com)
+{
+	lcdrs=0;
+	P0=com;
+	delay(5);
+	lcden=1;
+	delay(5);
+	lcden=0;
+}
+/////////////////////////////
+void write_data(unsigned char date)
+{
+	lcdrs=1;
+	P0=date;
+	delay(5);
+	lcden=1;
+	delay(5);
+	lcden=0;
+}
+///////////////////////////////
+void LCD1602_init()
+{
+	lcden=0;
+	write_com(0x38);
+	write_com(0x0c);
+	write_com(0x06);
+	write_com(0x01);
+}
+/////////////////////////////////
+void display(int shu)
+{
+	unsigned char dis_flag,i;
+	unsigned char table[]={" "};
+	if(shu<=9)
+	{
+		dis_flag=1;
+		table[0]=shu%10+'0';
+	}
+	else if(shu<=99&shu>9)
+	{
+		dis_flag=2;
+		table[0]=shu/10+'0';
+		table[1]=shu/1%10+'0';
+	}
+	else if(shu<=999&shu>99)
+	{
+		dis_flag=3;
+		table[0]=shu/100+'0';
+		table[1]=shu/10%10+'0';
+		table[2]=shu/1%10+'0';
+	}
+	else if(shu<=9999&shu>999)
+	{
+		dis_flag=4;
+		table[0]=shu/1000+'0';
+		table[1]=shu/100%10+'0';
+		table[2]=shu/10%10+'0';
+		table[3]=shu%10+'0';
+	}
+	write_com(0x80);
+	for(i=1;i<dis_flag;i++)
+	{
+		write_data(table[i]);
+		delay(5);
+	}
+	for(i=3;i<3;i++)
+	{
+		write_data(' ');
+		delay(5);
+	}
+}
+/////////////////////////
+void Count()
+{
+	time=TH0*256+TL0;
+	TH0=0;
+	TL0=0;
+	S=(time*1.7)/100;
+	if((S>=600)||flag==1)
+	{
+		flag=0;
+		display(8888);
+	}
+	else {display(S);}
+}
+/////////////////////////////
+void StartModule()
+{
+	TX=1;
+	_nop_();_nop_();_nop_();_nop_();
+	_nop_();_nop_();_nop_();_nop_();
+	_nop_();_nop_();_nop_();_nop_();
+	_nop_();_nop_();_nop_();_nop_();
+	_nop_();_nop_();_nop_();_nop_();
+	TX=0;
+}
+void mian()
+{
+	LCD1602_init();
+	while(1)
+	{
+		TMOD=0x01;
+		TH0=0;
+		TL0=0;
+		ET0=0;
+		EA=1;
+		while(1)
+		{
+			StartModule();
+			while(!RX);
+			TR0=1;
+			Count();
+			delay(200);
+		}
+	}
+}
+void zd0() interrupt 1
+{
+	flag=1;
+}</div>
         </div>
     </div>
     <!--end 公告区域-->
