@@ -61,7 +61,8 @@ input {
 						//document.getElementById("showpass1").innerHTML="<font color='red' size='1'>密码长度必须在7位至16位之间</font>";
 					}   else
 						
-						{document.getElementById("showpass1").innerHTML="<font color='green' size='1'>密码格式符合规则</font>"; 
+						{
+							//document.getElementById("showpass1").innerHTML="<font color='green' size='1'>密码格式符合规则</font>"; 
 						if (personPassword2 == "") {
 							//alert("请输入验证密码");
 							//document.getElementById("showpass2").innerHTML="<font color='red' size='1'>请输入验证密码</font>";
@@ -86,12 +87,12 @@ input {
 				</h2>
 				<input type="hidden" name="op" value="regist" />				 
 				<input id="personName" type="text" name="personName" placeholder="登陆ID" />
-				<div id="showname" style="width: 18.75rem;height: 1.25rem;"></div>
+				<div id="showname" style="width: 18.5rem;height: 1.5rem;"></div>
 				<input id="personPassword" type="password" name="personPassword" placeholder="请输入密码" />
-				<div id="showpass1" style="width: 18.75rem;height: 1.25rem;"></div>
+				<div id="showpass1" style="width: 18.5rem;height: 1.5rem;"></div>
 				<input id="personPassword2" type="password" name="personPassword2"
 					placeholder="请再次输入密码" />
-				<div id="showpass2" style="width: 18.75rem;height: 1.25rem;"></div>
+				<div id="showpass2" style="width: 18.5rem;height: 1.5rem;"></div>
 				<input class="button" type="submit" value="" />
 			</form>
 	</center>
